@@ -1,11 +1,11 @@
 Package: MATH4753F25dastin
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Lab code
 Version: 0.1.0
 Authors@R: c(
     person(
-      "Jane", "Doe",
-      email = "jane@example.com",
+      "Dastin", "Scott",
+      email = "dastinscott@gmail.com",
       role = c("aut", "cre")
     )
   )
@@ -15,3 +15,5 @@ License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.2
+URL: https://github.com/dastin-tain/MATH4753F25dastin
+BugReports: https://github.com/dastin-tain/MATH4753F25dastin/issues
