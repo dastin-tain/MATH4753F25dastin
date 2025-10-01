@@ -1,0 +1,84 @@
+---
+title: "Birthday"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Birthday}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(MATH4753F25dastin)
+```
+
+# 1
+
+**Mathematical derivation**
+
+Let $A$ = the probability that 2 or more poeple share a birthday, and $A^{c}$ = the complement of $A$, all $n$ birthdays are different.  
+
+The number of ways to pick $n$ unique birthdays from 365 days is:
+$$
+365(365-1)(365-2)\cdots(365-n+1)=\frac{365!}{(365-n)!}.
+$$
+
+The total number of possible individual birthdays is $365^{n}$, so:
+$$
+P(A^{c})=\frac{365!}{(365-n)!\,365^{n}}.
+$$
+
+So, the probability that two or more people share a birthday is:
+$$
+P(A)=1-P(A^{c})=1-\frac{365!}{(365-n)!\,365^{n}}.
+$$
+
+
+# 2
+
+**Reformulation**
+
+Previoously:
+$$
+P(A^{c})=\frac{365!}{(365-n)!\,365^{n}}.
+$$
+
+Take the log of each side:
+$$
+\log P(A^{c})=\log(n!) + \log\binom{365}{n} - n\log(365).
+$$
+
+So:
+$$
+P(A)=1-P(A^{c})=1-\exp\!\Big(\log(n!) + \log\binom{365}{n} - n\log(365)\Big).
+$$
+
+In R we use `lfactorial(n)` and `lchoose(365,n)`:
+$$
+P(A)=1-\exp\!\big(\texttt{lfactorial}(n)+\texttt{lchoose}(365,n)-n\log(365)\big).
+$$
+
+
+# 3
+
+**Birthday Function Body**
+
+`1 - exp(lchoose(365, x) + lfactorial(x) - x * log(365))`
+
+
+# 4
+
+```{r}
+
+birthday(20:25)
+
+```
+
+
+
