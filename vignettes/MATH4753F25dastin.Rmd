@@ -1,0 +1,66 @@
+---
+title: "MATH4753F25dastin"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{MATH4753F25dastin}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(MATH4753F25dastin)
+```
+
+# Function 1: scatter.R (scatterhist)
+
+```{r}
+scatterhist(x = 1:10, y = 11:20)
+
+```
+
+# Function 2: myboot2.R (myboot2)
+
+```{r}
+set.seed(39)
+x <- rnorm(25, 25, 10)
+myboot2(10000, x, fun = "mean", alpha = 0.05, col = "purple")
+
+```
+
+# Funciton 3: birthday.R (birthday)
+
+```{r}
+birthday(20)
+birthday(20:25)
+
+```
+
+# Function 4: mymaxlik.R (mymaxlik)
+
+```{r}
+library(MATH4753F25dastin)
+
+x_data <- c(3, 4, 3, 5)
+
+logpoiss <- function(y, lambda) log(dpois(y, lambda = lambda))
+
+lambda_grid <- seq(0, 20, length.out = 500)
+
+out_obj <- MATH4753F25dastin::mymaxlik(
+  lfun  = logpoiss,
+  x     = x_data,
+  param = lambda_grid,
+  xlab  = expression(lambda),
+  main  = "Example: mymaxlik() from MATH4753F25dastin package"
+)
+
+str(out_obj)
+
+```
